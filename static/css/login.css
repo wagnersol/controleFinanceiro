@@ -2,28 +2,54 @@ html, body{
     height: 100%;
 }
 
-.form-container {
-    position: relative;
-    z-index: 1;
-    max-width: 350px;
-    padding: 1rem;
-    background-color: rgba(255, 255, 255, 0.438);
-    color:rgb(7, 7, 7);
-    border-radius: 10px;
-  
-    
+body {
+    font-family: Arial, Helvetica, sans-serif;
+   /* background: radial-gradient(circle, rgba(239,240,244,1) 0%, rgba(89,178,101,1) 35%, rgba(5,143,20,0.9850139885055584) 100%);*/
+   /*background: linear-gradient(90deg, rgba(2,6,83,1) 9%, rgba(230,222,222,1) 46%, rgba(3,124,24,1) 79%);*/
+   background-color: #00bf63; 
+
 }
 
 
-body {
-    background-image: linear-gradient(0deg, rgba(245, 246, 248, 0.975), rgb(40, 8, 200));
+.form-container {
+  background-color: rgba(0,0,0,0.9);
+    position: absolute;
+    top:50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 80px;
+    border-radius: 70px 0 70px 0;
+    color:white;
 }
 
 .titulo-login{
-     color: #0000008d;
-   /*text-shadow: #000000;*/
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    
+     color: #f2f1f1;
+     text-align: center;
+     font-size: 45px;
+     margin-top: 0px;
 }
 
+input{
+    padding: 15px;
+    border: none;
+    outline: none;
+    font-size: 15px;
+    margin-bottom:16px !important;
+}
+
+button{
+    background-color:#148d04;
+    border: none;
+    padding: 15px;
+    width: 100%;
+    border-radius: 10px;
+    color: white;
+    font-size: 15px;  
+   
+}
+
+button:hover{
+    cursor: pointer;
+    background-color:darkgreen;
+}
 
