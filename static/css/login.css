@@ -54,3 +54,21 @@ button:hover{
     background-color:darkgreen;
 }
 
+.container__imagem {
+    display: flex;
+    justify-content: flex-end; 
+}
+
+.vetorPessoas{
+    height: 80vh;
+    right: 7vw;
+    bottom: 8vh;
+   
+ }
+
+ @media (max-width:768px) {
+    .container__imagem {
+        display: flex;
+        justify-content: flex-end;
+        margin: 200px 0 0;
+}}
