@@ -57,6 +57,16 @@ button:hover{
 .container__imagem {
     display: flex;
     justify-content: flex-end; 
+
+    max-height: 150px;
+    display: inline-block;
+   
+    
+}
+
+div,img{
+    border-radius: 25px;
+  
 }
 
 .vetorPessoas{

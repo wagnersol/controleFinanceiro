@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Cadastrar Nota</title>
-  <link rel="stylesheet" href="/static/css/consulta_medicamento.css">
+  <link rel="stylesheet" href="/static/css/cadastrar_nota.css">
   <link rel="stylesheet" href="/static/css/componentes/cabecalho.css">
 </head>
 <body>
@@ -23,26 +23,76 @@
     </nav>
   </header>
 
- <div class="conteudo_formulario">
-  <h2>Tabela de Remédios</h2>
-  <input type="text" id="inputRemedio" placeholder="Digite o nome do remédio">
-  <button id="buttonRemedio" onclick="buscaRemedio()">Buscar</button>
-  <table>
-    <thead>
-      <tr>
-        <th class="lado_esquerdo">Nome do Remédio</th>
-        <th>Quantidade</th>
-        <th>Dosagem</th>
-        <th>Validade</th>
-        <th>Doador</th>
-        <th>Contato</th>
-      </tr>
-    </thead>
-    <tbody id="tabela-corpo">
-      <!-- Os dados da tabela serão inseridos aqui -->
-    </tbody>
-  </table>
- </div>
+  <div class="tela-cadastrar nota">
+    <h1 id="titulo">Cadastrar Nota</h1>
+
+    <form>
+        <fieldset class="grupo">
+
+    <div class="campo">
+        <label for="nome"><strong>NOME</strong></label>
+        <input type="text" nome="nome" id="nome" required>
+    </div>
+   
+    <div class="campo">
+        <label for="sobrenome"><strong>SOBRENOME</strong></label>
+        <input type="text" nome="sobrenome" id="sobrenome" required>
+    </div>
+     </fieldset>
+
+     <div class="campo">
+        <label for="cpf"><strong>CPF</strong></label>
+        <input type="number" nome="cpf" id="cpf" required>
+    </div>
+
+
+    <div class="campo">
+        <label for="rg"><strong>GR</strong></label>
+        <input type="number" nome="rg" id="rg" required>
+    </div>
+
+    <div class="campo">
+        <label for="estado"><strong>ESTADO DE SAO PAULO</strong></label>
+        <select id="estado">
+            <option selected disabled value="Selecione"></option>
+            <option>zona norte</option>
+            <option>zona oeste</option>
+            <option>zona sul</option>
+            <option>zona leste</option>
+
+        </select>
+    </div>
+
+    <div class="campo">
+        <label for="cep"><strong>CEP</strong></label>
+        <input type="number" nome="cep" id="cep" required>
+    </div>
+
+    <div class="campo">
+        <label for="bairro"><strong>BAIRRO</strong></label>
+        <input type="text" nome="bairro" id="bairro" required>
+    </div>
+
+
+    
+    <div class="campo">
+        <label for="rua"><strong>RUA</strong></label>
+        <input type="text" nome="rua" id="rua" required>
+    </div>
+      
+    <div class="campo">
+        <label for="numero"><strong>NUMERO</strong></label>
+        <input type="number" nome="numero" id="numero" required>
+    </div>
+
+    <div class="campo">
+        <label for="complemento"><strong>COMPLEMENTO</strong></label>
+        <input type="text" nome="complemento" id="complemento" required>
+    </div>
+
+    <button>Cadastrar</button>
+    </form>
+
 
   <script src="./static/script/funcoes.js"></script>
   <script>
