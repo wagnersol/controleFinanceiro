@@ -5,25 +5,26 @@
     margin: 0;
     box-sizing: border-box;
     font-family: "Poppins", sans-serif;
+   
 }
 
 
 body{
-    background-image: linear-gradient(0deg, rgba(245, 246, 248, 0.975), rgba(4, 156, 27, 0.988));
+    background-image: linear-gradient(0deg, rgba(247, 249, 248, 0.988), rgba(3, 141, 28, 0.979));
     background-position: center;
     background-size: cover;
     align-items: center;
-    justify-content: center;
-    padding: 20px;
+    justify-content: space-between;
+    padding:0; 
     min-height: 100vh;
     text-align: center;
-    
+    margin:0;
+   
 }
 
 header,h1{
     width:100%;
     margin: 0;
-    color: wheat;
     padding: 15vh 0;
     font-size: 50%;
     line-height: 30px;  /*diminiu o espaçamento entre o nome cadastro*/
@@ -31,64 +32,50 @@ header,h1{
     
 }
 
+
+
 .divisao-titulo {
     margin: 0px;
-    height: 2vi;
+    margin-top: 48px;
+    margin-right: 40px;
     width: 100%;
-    left: 2vh;
-    position: relative;
+    text-align: center;
+    align-items: center;
+    margin-bottom: 20px;
+    justify-content: space-between;
+}
+
+.titulo-home{
+    color:#faf9f9eb;
+    font-size: 3.5vi;
+    margin:0;
+    
 }
 
 .container__imagem {
     display: flex;
-    justify-content: flex-end;
-
-
-    max-height: 150px;
-    display: inline-block;
-   
-    
+    justify-content: center;
+    align-items: center;
 }
 
 div,img{
     border-radius: 25px;
 }
 
-
-.titulo-home{
-    color:#faf9f9;
-    font-size: 3.5vi;
-    padding: 120px;
-    
-}
-
-.paragrafo{
-    font-family: Arial, Helvetica, sans-serif;
-    padding: 150px;
-  
-}
-
 .vetorPessoas{
-   height: 80vh;
-   right: 7vw;
+   height: auto;
+   max-width: 400px;
+   margin-left: 20px; /* Espaço entre o texto e a imagem */
    bottom: 8vh;
   
 }
 
-/*footer {
-    background-color: #333;
-    padding: 10px;
-    position: relative;
-    bottom: 0;
-    width: 100%;
-}
-*/
 
 @media (max-width:768px) {
     .container__imagem {
         display: flex;
         justify-content: flex-end;
-        margin: 200px 0 0;
+        
 }}
  
 

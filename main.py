@@ -16,21 +16,21 @@ def favicon():
 def hello_world():
     return render_template("home.html")
 
-@app.route("/cadastro")
-def cadastro():
-    return render_template("cadastro.html")
+@app.route("/cadastro_usuario")
+def cadastro_usuario():
+    return render_template("cadastro_usuario.html")
 
 
-@app.route("/cadastro_remedio")
-def cadastrar_medicamentos():
-    if not session.get('nome'):
-        return redirect(url_for('cadastro'))
-    return render_template("cadastro_remedio.html")
+@app.route("/cadastro_nota")
+def cadastrar_nota():
+    # if not session.get('nome'):
+    #    return redirect(url_for('cadastro_usuario')) 
+    return render_template("cadastro_nota.html") 
 
 @app.route("/consulta")
 def consulta_de_medicamentos():
     if not session.get('nome'):
-        return redirect(url_for('cadastro'))
+        return redirect(url_for('cadastro_usuarios'))
     return render_template("consulta_medicamento.html")
 
 @app.route("/sobre")
@@ -41,8 +41,8 @@ def sobre():
 def login():
     return render_template("login.html")
 
-@app.route("/busca_remedio_base", methods=["POST"])
-def busca_remedio_base():
+@app.route("/busca_notas_ficais", methods=["POST"])
+def busca_notas_ficais():
     json_request = request.json
     print(json_request, json_request["nome_remedio"])
     nome_remedio = json_request["nome_remedio"]
@@ -62,7 +62,6 @@ def busca_remedio_base():
 def submit():
     nome = request.form['nome']
     email = request.form['email']
-    telefone = request.form['telefone']
     senha = request.form['senha']
 
     # conecta com SQLite.
@@ -71,7 +70,7 @@ def submit():
 
     # Inserir dados na tabela SQLite.
     cursor.execute('''INSERT INTO usuario (nome, email, telefone, senha)
-                      VALUES (?, ?, ?, ?)''', (nome, email, telefone, senha))
+                      VALUES (?, ?, ?, ?)''', (nome, email, senha))
 
 # Commit e fechar conexão
     conn.commit()
@@ -128,7 +127,7 @@ def submit_login():
         session['secret_key'] = 'chave_acesso'
         return redirect(url_for('consulta_de_medicamentos'))
     else:
-        return redirect(url_for('cadastro'))
+        return redirect(url_for('cadastro_usuario'))
         
 if __name__=="__main__":
     app.secret_key = 'chave_acesso'

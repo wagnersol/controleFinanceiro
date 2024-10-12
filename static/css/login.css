@@ -13,7 +13,7 @@ body {
 
 
 .form-container {
-  background-color: rgba(0,0,0,0.9);
+   background-color: rgba(0,0,0,0.9);
     position: absolute;
     top:50%;
     left: 50%;
@@ -56,16 +56,18 @@ button:hover{
 
 .container__imagem {
     display: flex;
-    justify-content: flex-end; 
+    justify-content: right;
+    align-items: center;
+    margin-top: 100px;
+    
+  
 
-    max-height: 150px;
-    display: inline-block;
-   
     
 }
 
 div,img{
     border-radius: 25px;
+   
   
 }
 
