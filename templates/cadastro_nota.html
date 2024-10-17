@@ -22,78 +22,230 @@
           <a class="cabecalho__menu__link" href="solicitar relatório">Solicitar Relatório </a>
         </div>
     </nav>
-  </header>
+  
 
-  <div class="tela-cadastrar nota">
-    <h1 id="titulo">Cadastrar Nota</h1>
+  
+    <div class="container">
+      <div class="form-image">
+        <img src="/static/img/freelance-sucesso-financeiro-investimento-conceito-de-negocios-com-personagem-minusculo-freelancer-de-sucesso-trabalhando-e-ganhando-dinheiro-no-computador-em-casa-plana-metafora-de-renda-online_269730-441-1.jpg" alt="">
+      </div>
 
-    <form>
-        <fieldset class="grupo">
+      <div class="form">
+        <form action="#">
+            <div class="form-header">
+              <div class="title">
+                <h1>cadastrar nota</h1>
+              </div> 
+            </div>
 
-    <div class="campo">
-        <label for="nome"><strong>NOME</strong></label>
-        <input type="text" nome="nome" id="nome" required>
-    </div>
-   
-    <div class="campo">
-        <label for="sobrenome"><strong>SOBRENOME</strong></label>
-        <input type="text" nome="sobrenome" id="sobrenome" required>
-    </div>
-     </fieldset>
+            <div class="input-group">
+              <div class="input-box">
+                  <label for="numero">Numero da Nota </label>
+                  <input id="numero" type="number" nome="numero" placeholder="" required> 
+              </div> 
 
-     <div class="campo">
-        <label for="cpf"><strong>CPF</strong></label>
-        <input type="number" nome="cpf" id="cpf" required>
-    </div>
+                <div class="input-box">
+                  <label for="numero">Data e Hora de Emissão</label>
+                  <input id="numero" type="number" nome="numero" placeholder="" required> 
+                </div> 
+
+                
+                    <div class="input-box">
+                      <label for="codigo">Código de Verificação</label>
+                      <input id="codigo" type="text" nome="codigo" placeholder="" required> 
+                    </div>
+
+            
+                    <div class="form-header">
+                      <div class="title">
+                <h2>Prestador de Servicos</h2>
+            </div> 
+          </div>
+
+                <div class="input-box">
+                  <label for="numero">CPF/CNPJ</label>
+                  <input id="numero" type="number" nome="numero" placeholder="" required> 
+                </div>
+
+                <div class="input-box">
+                    <label for="numero">Inscrição Municipal</label>
+                    <input id="numero" type="number" nome="numero" placeholder="" required> 
+                  </div>
+
+                  <div class="input-box">
+                    <label for="nome">Nome/Razao Social</label>
+                    <input id="nome" type="text" nome="nome" placeholder="" required> 
+                  </div>
+
+                  <div class="input-box">
+                    <label for="nome, numero">Endereço/Número/Cep</label>
+                    <input id="nome, numero" type="text, number" nome="nome, numero" placeholder="" required> 
+                  </div>
+
+                  <div class="input-box">
+                    <label for="nome">Municipio/UF</label>
+                    <input id="nome" type="text" nome="nome" placeholder="" required> 
+                  </div>
+
+                 
+                <div class="title">
+                    <h2>Tomador de Serviços</h2>
+                </div>
+            
+
+                <div class="input-box">
+                    <label for="nome">Nome/Razão Social</label>
+                    <input id="nome" type="text" nome="nome" placeholder="" required> 
+                  </div>
+
+                  <div class="input-box">
+                    <label for="numero">CPF/CNPJ</label>
+                    <input id="numero" type="number" nome="numero" placeholder="" required> 
+                  </div>
+
+                  <div class="input-box">
+                    <label for="numero">Inscrição Municipal</label>
+                    <input id="numero" type="number" nome="numero" placeholder="" required> 
+                  </div>
+
+                  <div class="input-box">
+                    <label for="nome, numero">Endereço/Número/Cep</label>
+                    <input id="nome, numero" type="text, number" nome="nome, numero" placeholder=" " required> 
+                  </div>
+
+                  
+                  <div class="input-box">
+                    <label for="nome">Município/UF</label>
+                    <input id="nome" type="text" nome="nome" placeholder="" required> 
+                  </div>
+
+                  <div class="input-box">
+                    <label for="email">E-mail</label>
+                    <input id="email" type="email" nome="email" placeholder="" required> 
+                  </div>
+
+                  
+                 
+                <div class="title">
+                    <h2>Intermediario de Servicos</h2>
+                  </div>
+             
+                <div class="input-box">
+                    <label for="numero">CPF/CNPJ</label>
+                    <input id="nome" type="text" nome="nome" placeholder="--" required>
+                  </div>
+                
+
+                  <div class="input-box">
+                    <label for="nome">Nome/Razao Social</label>
+                    <input id="nome" type="text" nome="nome" placeholder="--" required>
+                  </div>
 
 
-    <div class="campo">
-        <label for="rg"><strong>GR</strong></label>
-        <input type="number" nome="rg" id="rg" required>
-    </div>
-
-    <div class="campo">
-        <label for="estado"><strong>ESTADO DE SAO PAULO</strong></label>
-        <select id="estado">
-            <option selected disabled value="Selecione"></option>
-            <option>zona norte</option>
-            <option>zona oeste</option>
-            <option>zona sul</option>
-            <option>zona leste</option>
-
-        </select>
-    </div>
-
-    <div class="campo">
-        <label for="cep"><strong>CEP</strong></label>
-        <input type="number" nome="cep" id="cep" required>
-    </div>
-
-    <div class="campo">
-        <label for="bairro"><strong>BAIRRO</strong></label>
-        <input type="text" nome="bairro" id="bairro" required>
-    </div>
-
-
+                  <div class="title">
+                    <h2>Discriminação dos Servicos</h2>
+                  
+                  <br>
+                  <textarea row="6" style="width:26rem" id="discriminacao" name="discriminacao">
+                  </textarea>
+                </div>
+            
+                <div class="title">
+                  <h2>Valor Total do Servico</h2>
     
-    <div class="campo">
-        <label for="rua"><strong>RUA</strong></label>
-        <input type="text" nome="rua" id="rua" required>
-    </div>
-      
-    <div class="campo">
-        <label for="numero"><strong>NUMERO</strong></label>
-        <input type="number" nome="numero" id="numero" required>
-    </div>
+              <div class="input-box">
+                <label for="nome">INSS(R$)</label>
+                <input id="nome" type="text" nome="nome" placeholder="--" required>
+              </div>
+            </div>
 
-    <div class="campo">
-        <label for="complemento"><strong>COMPLEMENTO</strong></label>
-        <input type="text" nome="complemento" id="complemento" required>
-    </div>
+              <div class="input-box">
+                <label for="nome">IRRF(R$)</label>
+                <input id="nome" type="text" nome="nome" placeholder="--" required>
+              </div>
 
-    <button>Cadastrar</button>
-    </form>
+              <div class="input-box">
+                <label for="nome">CSLL(R$)</label>
+                <input id="nome" type="text" nome="nome" placeholder="--" required>
+              </div>
 
+              
+              <div class="input-box">
+                <label for="nome">CONFINS(R$)</label>
+                <input id="nome" type="text" nome="nome" placeholder="" required> 
+              </div>
+
+              <div class="input-box">
+                <label for="nome">PIS/PASEP(R$)</label>
+                <input id="nome" type="text" nome="nome" placeholder="" required> 
+              </div>
+
+              <div class="input-box">
+                <label for="nome">Código do Serviço</label>
+                <input id="nome" type="text" nome="nome" placeholder="" required> 
+              </div>
+
+              <div class="input-box">
+                <label for="nome">Valor Total dos Deduções(R$)</label>
+                <input id="nome" type="text" nome="nome" placeholder="" required> 
+              </div>
+
+              <div class="input-box">
+                <label for="nome">Base de Cálculo(R$)</label>
+                <input id="nome" type="text" nome="nome" placeholder="" required> 
+              </div>
+
+              <div class="input-box">
+                <label for="nome">Alíquota(%)</label>
+                <input id="nome" type="text" nome="nome" placeholder="" required> 
+              </div>
+
+              <div class="input-box">
+                <label for="nome">Valor do ISS(R$)</label>
+                <input id="nome" type="text" nome="nome" placeholder="" required> 
+              </div>
+
+              <div class="input-box">
+                <label for="nome">Crédito(R$)</label>
+                <input id="nome" type="text" nome="nome" placeholder="" required> 
+              </div>
+
+              <div class="input-box">
+                <label for="nome">Número da Prestação do Serviço</label>
+                <input id="nome" type="text" nome="nome" placeholder="--" required>
+              </div>
+
+              <div class="input-box">
+                <label for="nome">Número Inscrição da Obra</label>
+                <input id="nome" type="text" nome="nome" placeholder="--" required>
+              </div>
+
+              
+              <div class="input-box">
+                <label for="nome">Valor Aproximação dos Tributos/Fonte</label>
+                <input id="nome" type="text" nome="nome" placeholder="--" required>
+              </div>
+
+              
+              <div class="title">
+                <h2>Outras Informações</h2>
+              <div>
+                <br>
+                <textarea row="6" style="width:26rem" id="discriminacao" name="discriminacao">
+                </textarea>
+              </div>
+            </div>
+
+            </div>
+            </div> 
+
+            <div class="continue-button"></div>
+            <button><a href="#"></a>Cadastrar</button>
+            </form>
+        </div>
+        </div>
+        
+    </header>
 
   <script src="./static/script/funcoes.js"></script>
   <script>

@@ -56,6 +56,12 @@ header,h1{
     display: flex;
     justify-content: center;
     align-items: center;
+    /* margin-top: 100px; */
+    
+  
+   
+    
+
 }
 
 div,img{
@@ -64,10 +70,9 @@ div,img{
 
 .vetorPessoas{
    height: auto;
-   max-width: 400px;
+   max-width: 590px; 
    margin-left: 20px; /* Espaço entre o texto e a imagem */
    bottom: 8vh;
-  
 }
 
 

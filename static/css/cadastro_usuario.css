@@ -9,7 +9,8 @@
 
 
 body {
-    background-image: linear-gradient(0deg, rgba(245, 246, 248, 0.975), rgb(40, 8, 200));
+    background-attachment: fixed;
+    background-image: linear-gradient(0deg, rgba(245, 246, 248, 0.975), rgba(4, 156, 27, 0.988));
     background-position: center;
     background-size: cover;
     min-height: 100vh;
@@ -30,14 +31,13 @@ body {
 
 .box{   /* mexe com a aparte do formulario ex:já é membro*/
 display: flex;
-width: 930px;
+width: 900px;
 
 }
 
-.img-box{  /* mexe com a aparte do formulario ex:já é membro*/
-    background-color: rgba(255, 255, 255, 0.2);
-   /*background-color: rgba(29, 6, 161, 0.969); /* muda a cor do fundo da imagem*/
-    width: 50%;
+.img-box{  
+    background-color: rgb(248, 248, 251); /*muda a cor do fundo da imagem*/
+    width: 150%;
     display: flex;
     align-items: center;
     padding: 20px;
@@ -50,32 +50,14 @@ width: 100%;
 }
 
 .form-box{/* muda a cor do quadrado*/
-    background-color: rgba(255, 255, 255, 0.3);
+     background-color: rgba(37, 191, 117, 0.97); 
     backdrop-filter: blur (40px);
     padding: 30px 40px;
     border-radius:  0 20px 20px 0;
 }
 
-
-.form-box h2{
-font-size: 30px;
-
-}
-.form-box p{
-    font-weight: bold;
-    color: #3D3D3D;
-
-}
-
-.form-box p a{
-    color: #f40d0d;
-    text-decoration: none;
-
-}
-
 .form-box form{
   margin: 20px 0; 
-
 }
 
 
@@ -84,7 +66,7 @@ form .input-group{
 }
 
 form .input-group label{
-    color: #080707;
+    color: #101010;
     font-weight: bold;
     display: block;
     margin-bottom: 5px;
@@ -95,33 +77,44 @@ form .input-group label{
 form .input-group input{
     width: 100%;
     height: 47px;
-    background-color: rgba(249, 248, 248, 0.983) ;
+    background-color: rgba(249, 247, 247, 0.983) ;
     outline: none;
     border: 2px solid transparent;
     padding: 15px;
-    font-size: 15px;
-    color: #616161;
+    font-size: 18px;
+    color: #101010;
     transition: all 0.4s ease;
+    
+   
+
+    
+}
+div .input-group input{
+    border-radius: 20px; 
+    
 }
 
-/*form .input-group input:focus{
-  border-color: #FF008A;
-}*/
+
+form .input-group input:focus{
+  border-color: #2509f7;
+  
+}
 
 form .input-group button {
-    width: 100%;
+    width: 100%; 
     height: 47px;
-    background: #1d90f5;
-   /* background-color: #2600ff;*/
     border-radius: 20px;
     outline: none;
     border: none;
     margin-top: 15px;
-    color: white;
-    cursor: pointer;
+    cursor: pointer; 
     font-size: 16px;
 
 }
+
+
+
+
 
 
 /*@media (max-width:930px){
@@ -137,7 +130,7 @@ form .input-group button {
         border-radius: 20px;
     }
 
-}*/
+}
 
 /*@media (max-width:500px){
     .w50{
