@@ -10,7 +10,7 @@
 
 body {
     background-attachment: fixed;
-    background-image: linear-gradient(0deg, rgba(245, 246, 248, 0.975), rgba(4, 156, 27, 0.988));
+    background-image: linear-gradient(0deg, rgba(200, 201, 201, 0.982), rgba(4, 156, 27, 0.988));
     background-position: center;
     background-size: cover;
     min-height: 100vh;
@@ -112,31 +112,3 @@ form .input-group button {
 
 }
 
-
-
-
-
-
-/*@media (max-width:930px){
-    .img-box{
-        display: none;
-    }
-    .box{
-        width: 700px;
-    }
-
-    .form-box{
-        width: 100%;
-        border-radius: 20px;
-    }
-
-}
-
-/*@media (max-width:500px){
-    .w50{
-        width: 100%;
-        padding: 0;
-    }
-
-
-}*/
