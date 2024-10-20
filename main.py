@@ -3,6 +3,9 @@ from flask import render_template, send_from_directory, request, redirect, url_f
 from flask_cors import CORS
 import sqlite3
 import json
+import psycopg
+
+URL_CONNEXAO = "postgres://neondb_owner:3Vzlg8qIRBoa@ep-green-bonus-a58b1qy5.us-east-2.aws.neon.tech/neondb"
 
 app = Flask(__name__)
 CORS(app)
@@ -40,6 +43,19 @@ def sobre():
 @app.route("/login")
 def login():
     return render_template("login.html")
+
+@app.route("/criar_nota", methods=["POST"])
+def criar_nota():
+    json_request = request.form
+    print( json_request)
+    nome_cliente = json_request["nome_cliente"]
+    valor_entrada = json_request["valor_entrada"]
+    valor_saida = json_request["valor_saida"]
+    with psycopg.connect(URL_CONNEXAO) as conn:
+        with conn.cursor() as cur:
+            cur.execute("INSERT INTO nota_fiscal (nome_cliente, valor_entrada, valor_saida) VALUES (%s, %s, %s)", 
+                        (nome_cliente, valor_entrada, valor_saida))
+            conn.commit()
 
 @app.route("/busca_notas_ficais", methods=["POST"])
 def busca_notas_ficais():
