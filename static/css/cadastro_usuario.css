@@ -84,11 +84,9 @@ form .input-group input{
     font-size: 18px;
     color: #101010;
     transition: all 0.4s ease;
-    
-   
-
-    
 }
+
+
 div .input-group input{
     border-radius: 20px; 
     
@@ -109,6 +107,7 @@ form .input-group button {
     margin-top: 15px;
     cursor: pointer; 
     font-size: 16px;
+    
 
 }
 

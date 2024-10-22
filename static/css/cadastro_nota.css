@@ -19,116 +19,70 @@ body{
    display: flex;
    box-shadow: 5px 5px 10px rgba(0,0,0,.212);
    background-color: rgba(37, 191, 117, 0.97); 
+   margin: auto;
+   border-radius: 24px;
 }
 
-/*.form-image .container{
-   width: 60%;
+.form-image{
+   width: 50%;
    background-color: rgba(245, 247, 246, 0.997); 
-   border-radius: 24px;
-}*/
+   border-radius: 20px 0 0 20px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
 
 .form-image img{
-    width: 31rem ;
-    
+    width:90%;
 }
 
-/* formulario 
+/* /* formulario  */
 .form-container{
     width: 50%; 
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    background-color: #f1eeee;
     padding: 3rem;
+    border-radius: 24px;
    
-}*/
-
-
- /* titulo  
-.form-header{
-   margin: 3rem;
-   display: flex;
-   justify-content: space-between;
- 
-}*/
-
-/*.input-group{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    padding: 1rem 0;
-}*/
-
-/* diminue o nome cnpj */
-.input-box{   
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 1.1rem;
-    
 }
 
- /* espaçamento entre os nomes  */
-.input-box input{  
-    /* margin: 0.1rem ; */
+/* Estilo dos títulos e inpust */
+.input-box{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 0.4rem;
+    font-size: 16px;
+}
+
+.input-box input{   
     padding: 0.3rem 1.0rem;
     border: none;
     border-radius: 10px;
     box-shadow: 1px 1px 6px #0000001c;
+    
 }
-
-
 
 .input-box input:focus-visible{ 
     outline: 1px solid #1960db;
 }
 
-
- h2{
-    /* font-size: 0.85rem;  */
-    /* font-weight: 700px;   */
-    color: rgb(225, 15, 15);
-    /* font-size: 40px; */
-     
+h2{
+    color: rgb(8, 8, 8);
 }
 
 
-/*form .continue-button{
+.continue-button input{
     width: 100%;
-    margin-top: 2.5rem;
-    border: none;
-    background-color: #f5f4f8;
-    padding: 0.62rem;
-    border-radius: 5px;
-    cursor: pointer;
-    text-align: center;
-    background-color: #f5f4f8;
-   
-
-
-
-    width: 100%; 
     height: 47px;
     border-radius: 20px;
     outline: none;
     border: none;
-    margin-top: 15px;
-    cursor: pointer; 
+    margin-top:15px;
+    cursor: pointer;
     font-size: 16px;
-
-
-
+    background-color: #faf9fbf1;
+    color:black;
 }
 
-.continue-button button:hover{  
-    background-color:#6b63fff1;
-    
-}
-
-.continue-button{
-    text-decoration: none;
-    font-size: 0.93rem;
-    font-weight: 500px;
-    color:#f00a0a;
-}
-*/
