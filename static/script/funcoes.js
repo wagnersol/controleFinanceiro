@@ -83,7 +83,12 @@ function buscarRemedio() {
         tr.appendChild(tdDosagem);
         tr.appendChild(tdValidade);
         tabelaCorpo.appendChild(tr);
+
       })
 
   })
+}
+
+function criar_nota(){
+  
 }

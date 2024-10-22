@@ -46,11 +46,9 @@ def login():
 
 @app.route("/criar_nota", methods=["POST"])
 def criar_nota():
-    json_request = request.form
-    print( json_request)
-    nome_cliente = json_request["nome_cliente"]
-    valor_entrada = json_request["valor_entrada"]
-    valor_saida = json_request["valor_saida"]
+    nome_cliente = request.form["nome_cliente"]
+    valor_entrada = request.form["valor_entrada"]
+    valor_saida = request.form["valor_saida"]
     with psycopg.connect(URL_CONNEXAO) as conn:
         with conn.cursor() as cur:
             cur.execute("INSERT INTO nota_fiscal (nome_cliente, valor_entrada, valor_saida) VALUES (%s, %s, %s)", 
