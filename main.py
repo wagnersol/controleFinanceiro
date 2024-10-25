@@ -46,13 +46,16 @@ def login():
 
 @app.route("/criar_nota", methods=["POST"])
 def criar_nota():
-    nome_cliente = request.form["nome_cliente"]
+    nome_empresa = request.form["nome_empresa"]
+    numero_cpf_cnpj = request.form["numero_cpf_cnpj"]
+    nome_cliente = request.form["nome_tomador_de_servicos"]
+    numero_tomador_cpf_cnpj = request.form["numero_tomador_cpf_cnpj"]
     valor_entrada = request.form["valor_entrada"]
     valor_saida = request.form["valor_saida"]
     with psycopg.connect(URL_CONNEXAO) as conn:
         with conn.cursor() as cur:
-            cur.execute("INSERT INTO nota_fiscal (nome_cliente, valor_entrada, valor_saida) VALUES (%s, %s, %s)", 
-                        (nome_cliente, valor_entrada, valor_saida))
+            cur.execute("INSERT INTO nota_fiscal (nome_empresa,nome_cliente,numero_cpf_cnpj,numero_tomador_cpf_cnpj, valor_entrada, valor_saida) VALUES (%s, %s, %s,%s)", 
+                        (nome_empresa,nome_cliente,numero_cpf_cnpj,numero_tomador_cpf_cnpj, valor_entrada, valor_saida))
             conn.commit()
 
 @app.route("/busca_notas_ficais", methods=["POST"])
