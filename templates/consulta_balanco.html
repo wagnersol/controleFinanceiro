@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Formulário de Remédio</title>
+    <link rel="stylesheet" href="/static/css/consultar_balanco.css" />
+    <link rel="stylesheet" href="/static/css/componentes/cabecalho.css">
+  </head>
+  <body>
+
+    <header class="cabecalho">
+      <nav class="cabecalho__menu">
+          <button class="menu-toggle" aria-label="Toggle menu">
+              ☰
+          </button>
+          <div class="menu-links">
+            <a class="cabecalho__menu__link" href="login">Login</a>
+                <a class="cabecalho__menu__link" href="cadastro_nota">Cadastrar Nota</a>
+                <a class="cabecalho__menu__link" href="cadastro_usuario">Cadastrar Usuario</a>
+                <a class="cabecalho__menu__link" href="consultar balanço">Consultar Balanço</a>
+                <a class="cabecalho__menu__link" href="solicitar relatório">Solicitar Relatório </a>
+          </div>
+      </nav>
+  </header>
+
+  <h2>Consulta Balanço</h2>
+
+  <div class="container">
+    <input type="checkbox" value="ativo" name="input_ativo" id="input_ativo" checked onclick="checkboxClicado()">
+    <label for="input_ativo"> Ativos </label><br>
+
+    <input type="checkbox" value="passivo" name="input_passivo" id="input_passivo" checked onclick="checkboxClicado()">
+    <label for="input_passivo"> Passivos </label><br>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Cliente</th>
+          <th>Saldo</th>
+          <th>Data</th>
+        </tr>
+      </thead>
+      <tbody id="tabela_balanco">
+        <!-- Construir no Javascript -->
+      </tbody>
+    </table>
+  </div>
+
+  <script src="./static/script/funcoes.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const menuToggle = document.querySelector('.menu-toggle');
+        const menuLinks = document.querySelector('.menu-links');
+
+        menuToggle.addEventListener('click', function() {
+            menuLinks.classList.toggle('active');
+        });
+
+        consultaBalanco();
+    });
+  </script>
+  </body>
+</html>

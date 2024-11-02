@@ -26,15 +26,53 @@ def cadastro_usuario():
 
 @app.route("/cadastro_nota")
 def cadastrar_nota():
-    # if not session.get('nome'):
-    #    return redirect(url_for('cadastro_usuario')) 
+    if not session.get('nome'):
+       return redirect(url_for('cadastro_usuario')) 
     return render_template("cadastro_nota.html") 
 
-@app.route("/consulta")
-def consulta_de_medicamentos():
+@app.route("/consulta_balanco")
+def consulta_balanco():
     if not session.get('nome'):
         return redirect(url_for('cadastro_usuarios'))
-    return render_template("consulta_medicamento.html")
+    return render_template("consulta_balanco.html")
+
+@app.route("/executa_consulta_balanco", methods=["POST"])
+def executa_consulta_balanco():
+    json_request = request.json
+    print(json_request)
+    ativo = json_request["ativo"] # Se for TRUE, queremos notas com valor_entrada > 0
+    passivo = json_request["passivo"]  # Se for TRUE, queremos notas com valor_saida > 0
+
+    notas_ativo = []
+    notas_passivo = []
+
+    with psycopg.connect(URL_CONNEXAO) as conn:
+        with conn.cursor() as cur:
+            if ativo:
+                cur.execute("SELECT nome_cliente, valor_entrada, valor_saida, data_emissao FROM nota_fiscal where valor_entrada > 0")
+                notas_ativo = cur.fetchall()
+
+            if passivo:
+                cur.execute("SELECT nome_cliente, valor_entrada, valor_saida, data_emissao FROM nota_fiscal where valor_saida > 0")
+                notas_passivo = cur.fetchall()
+
+    dados = notas_ativo + notas_passivo
+
+    dados_formatados = []
+    for nota_fiscal in dados:
+        dados_formatados.append(
+            [
+                nota_fiscal[0],
+                nota_fiscal[1],
+                nota_fiscal[2],
+                nota_fiscal[3].strftime("%d-%m-%Y"),
+            ]
+        )
+
+    print("@@@@@")
+    print(dados_formatados)
+
+    return jsonify(dados_formatados)
 
 @app.route("/sobre")
 def sobre():
@@ -47,14 +85,16 @@ def login():
 @app.route("/criar_nota", methods=["POST"])
 def criar_nota():
     nome_cliente = request.form["nome_tomador_de_servicos"]
-    numero_tomador_cpf_cnpj = request.form["numero_tomador_cpf_cnpj"]
+    cpf_cnpj = request.form["numero_tomador_cpf_cnpj"]
     valor_entrada = request.form["valor_entrada"]
     valor_saida = request.form["valor_saida"]
+    data_emissao = request.form["data_emissao"]
     with psycopg.connect(URL_CONNEXAO) as conn:
         with conn.cursor() as cur:
-            cur.execute("INSERT INTO nota_fiscal (nome_empresa,nome_cliente,numero_cpf_cnpj,numero_tomador_cpf_cnpj, valor_entrada, valor_saida) VALUES (%s, %s, %s,%s)", 
-                        (nome_cliente,numero_tomador_cpf_cnpj, valor_entrada, valor_saida))
+            cur.execute("INSERT INTO nota_fiscal (nome_cliente, cpf_cnpj, data_emissao, valor_entrada, valor_saida) VALUES (%s, %s, %s, %s, %s)", 
+                        (nome_cliente, cpf_cnpj, data_emissao, valor_entrada, valor_saida))
             conn.commit()
+    return render_template("nota_cadastrada.html")
 
 @app.route("/busca_notas_ficais", methods=["POST"])
 def busca_notas_ficais():
@@ -73,28 +113,17 @@ def busca_notas_ficais():
     dados = cursor.fetchall()
     return jsonify(dados)
 
-@app.route('/submit', methods=['POST'])
-def submit():
+@app.route('/submit_usuario', methods=['POST'])
+def submit_usuario():
     nome = request.form['nome']
     email = request.form['email']
     senha = request.form['senha']
-
-    # conecta com SQLite.
-    conn = sqlite3.connect('banco_de_dados.db')
-    cursor = conn.cursor()
-
-    # Inserir dados na tabela SQLite.
-    cursor.execute('''INSERT INTO usuario (nome, email, telefone, senha)
-                      VALUES (?, ?, ?, ?)''', (nome, email, senha))
-
-# Commit e fechar conexão
-    conn.commit()
-    conn.close()
-
-   # redireciona para página sucesso.html
+    with psycopg.connect(URL_CONNEXAO) as conn:
+        with conn.cursor() as cur:
+            cur.execute("INSERT INTO usuarios (nome, email, senha) VALUES (%s, %s, %s)", 
+                        (nome, email, senha))
+            conn.commit()
     return redirect(url_for('login'))
-
- # submit dos remedios
 
 @app.route('/submit_remedio', methods=['POST'])
 def submit_remedio():
@@ -124,23 +153,17 @@ def submit_login():
     email = request.form['email']
     senha = request.form['senha']
 
-    # Conecta com SQLite
-    conn = sqlite3.connect('banco_de_dados.db')
-    cursor = conn.cursor()
+    with psycopg.connect(URL_CONNEXAO) as conn:
+        with conn.cursor() as cur:
+            cur.execute("SELECT * FROM usuarios where email = %s and senha = %s", (email, senha))
+            usuario = cur.fetchone()
 
-    # Consulta os dados
-    cursor.execute("SELECT * FROM usuario WHERE email = ? AND senha = ?", (email, senha))
-    dados = cursor.fetchall()
-
-    # Fecha conexão com o banco de dados
-    conn.close()
-
-    if len(dados) > 0:
-        session['nome'] = dados[0][1]
+    if len(usuario) > 0:
+        session['nome'] = usuario[1]
         session['email'] = email
-        session['id_usuario'] = dados[0][0]
+        session['id_usuario'] = usuario[0]
         session['secret_key'] = 'chave_acesso'
-        return redirect(url_for('consulta_de_medicamentos'))
+        return redirect(url_for('cadastrar_nota'))
     else:
         return redirect(url_for('cadastro_usuario'))
         

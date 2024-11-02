@@ -1,0 +1,63 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body{
+    background-attachment: fixed;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(45deg,rgb(200, 201, 201,0.982),rgb(4, 156, 27,0.988));
+}
+
+.container{ 
+   width: 100%;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   border-radius: 24px;
+}
+
+/* Estilo dos títulos e inpust */
+.input-box{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 0.4rem;
+    font-size: 16px;
+}
+
+.input-box input{   
+    padding: 0.3rem 1.0rem;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 1px 1px 6px #0000001c;
+    
+}
+
+.input-box input:focus-visible{ 
+    outline: 1px solid #1960db;
+}
+
+h2{
+    color: rgb(8, 8, 8);
+}
+
+.aviso-container {
+    width: 50%;
+    background-color: #FFFFFF;
+    padding: 24px;
+    text-align: center;
+    border-radius: 16px;
+}
+
+.aviso-container p {
+    margin-bottom: 16px;
+}
+
+
+.aviso-container a {
+    padding: 0 8px;
+}
