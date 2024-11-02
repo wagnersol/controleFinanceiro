@@ -40,23 +40,22 @@ def consulta_balanco():
 def executa_consulta_balanco():
     json_request = request.json
     print(json_request)
-    ativo = json_request["ativo"] # Se for TRUE, queremos notas com valor_entrada > 0
-    passivo = json_request["passivo"]  # Se for TRUE, queremos notas com valor_saida > 0
+    ativo = bool(json_request["ativo"]) # Se for TRUE, queremos notas com valor_entrada > 0
+    passivo = bool(json_request["passivo"])  # Se for TRUE, queremos notas com valor_saida > 0
+    nome_cliente = json_request["nome_cliente"] or ""  # Busca pelo nome do cliente. Se nome for vazio, esse parametro é ignorado
 
-    notas_ativo = []
-    notas_passivo = []
-
+    dados = []
     with psycopg.connect(URL_CONNEXAO) as conn:
         with conn.cursor() as cur:
-            if ativo:
-                cur.execute("SELECT nome_cliente, valor_entrada, valor_saida, data_emissao FROM nota_fiscal where valor_entrada > 0")
-                notas_ativo = cur.fetchall()
-
-            if passivo:
-                cur.execute("SELECT nome_cliente, valor_entrada, valor_saida, data_emissao FROM nota_fiscal where valor_saida > 0")
-                notas_passivo = cur.fetchall()
-
-    dados = notas_ativo + notas_passivo
+            cur.execute(""" SELECT nome_cliente, valor_entrada, valor_saida, data_emissao 
+                FROM nota_fiscal 
+                where 1 = 1 
+                AND (%(ativo)s IS TRUE OR valor_saida > 0)
+                AND (%(passivo)s IS TRUE OR valor_entrada > 0)
+                AND (LENGTH(%(nome_cliente)s) = 0 OR nome_cliente ilike %(nome_cliente)s)
+                ORDER BY nome_cliente
+                """, {"ativo": ativo , "passivo": passivo, "nome_cliente": f"%{nome_cliente}%" })
+            dados = cur.fetchall()
 
     dados_formatados = []
     for nota_fiscal in dados:
@@ -68,9 +67,6 @@ def executa_consulta_balanco():
                 nota_fiscal[3].strftime("%d-%m-%Y"),
             ]
         )
-
-    print("@@@@@")
-    print(dados_formatados)
 
     return jsonify(dados_formatados)
 

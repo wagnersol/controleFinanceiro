@@ -1,24 +1,27 @@
 
 function consultaBalanco() {
-  let inputAtivo = document.getElementById("input_ativo").checked;
-  let inputPassivo = document.getElementById("input_passivo").checked;
-  opcoes = {
+  const parametrosBusca = {
+    "ativo": document.getElementById("input_ativo").checked, 
+    "passivo": document.getElementById("input_passivo").checked,
+    "nome_cliente": document.getElementById("nome_cliente").value
+  }
+
+  let opcoes = {
     method: "POST",
     mode: "cors", // no-cors, *cors, same-origin
     credentials: "same-origin", // include, *same-origin, omit
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({"ativo": inputAtivo, "passivo": inputPassivo}),
+    headers: {"Content-Type": "application/json"},
+    body: JSON.stringify(parametrosBusca)
   }
+  carregandoInicio()
+
   fetch("http://127.0.0.1:9000/executa_consulta_balanco", opcoes)
     .then((response) => response.json())
     .then((dados) => {
-      console.log(" @@@@@@@ ")
-      console.log(dados)
-
       formataBalanco(dados)
+      carregandoFim()
     })
+
 }
 
 function formataBalanco(dados) {
@@ -37,7 +40,7 @@ function formataBalanco(dados) {
     html += '</td>'
     
     html += '<td>' // saldo
-    html += saldo
+    html += formataMoeda(saldo)
     html += '</td>'
 
     html += '<td>' // data  
@@ -52,11 +55,11 @@ function formataBalanco(dados) {
   html += '<tr>' // linha da tabela
     
   html += '<td>'
-  html += '<strong>Total:</strong>'
+  html += '<strong>Total (' + dados.length + ' clientes):</strong>'
   html += '</td>'
   
   html += '<td>' // saldo
-  html += total
+  html += formataMoeda(total)
   html += '</td>'
 
   let dia = data_hoje.getDay()
@@ -76,4 +79,21 @@ function formataBalanco(dados) {
 
 function checkboxClicado() {
   consultaBalanco()
+}
+
+function submitFormularioConsulta(evento) {
+  evento.preventDefault();
+  consultaBalanco();
+}
+
+function carregandoInicio() {
+  document.querySelectorAll('.carregando')[0].classList.remove('carregando-inativo')
+}
+
+function carregandoFim() {
+  document.querySelectorAll('.carregando')[0].classList.add('carregando-inativo')
+}
+
+function formataMoeda(numero) {
+  return new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(numero);
 }
