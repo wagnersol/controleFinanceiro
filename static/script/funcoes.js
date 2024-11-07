@@ -1,3 +1,4 @@
+const URL_BASE = "http://127.0.0.1:9000"
 
 function consultaBalanco() {
   const parametrosBusca = {
@@ -15,7 +16,7 @@ function consultaBalanco() {
   }
   carregandoInicio()
 
-  fetch("http://127.0.0.1:9000/executa_consulta_balanco", opcoes)
+  fetch(`${URL_BASE}/executa_consulta_balanco`, opcoes)
     .then((response) => response.json())
     .then((dados) => {
       formataBalanco(dados)
@@ -62,13 +63,14 @@ function formataBalanco(dados) {
   html += formataMoeda(total)
   html += '</td>'
 
-  let dia = data_hoje.getDay()
+  let dia = data_hoje.getDate()
   if (dia < 10) {
     dia = "0" + dia
   }
+  let mes = data_hoje.getMonth() + 1
 
   html += '<td>' // data  
-  html += dia + "-" + data_hoje.getMonth() + "-" + data_hoje.getFullYear()
+  html += dia + "-" + mes + "-" + data_hoje.getFullYear()
   html += '</td>'
   
   html += '</tr>'
@@ -96,4 +98,28 @@ function carregandoFim() {
 
 function formataMoeda(numero) {
   return new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(numero);
+}
+
+function solicitarRelatorio(evento) {
+  evento.preventDefault();
+  const cabecalho = ['id', 'nome_cliente', 'cpf/cnpj', 'data_emissao', 'valor_entrada', 'valor_saida'];
+
+  let opcoes = {
+    method: "GET",
+    mode: "cors", // no-cors, *cors, same-origin
+    credentials: "same-origin" // include, *same-origin, omit
+  }
+
+  notas_fiscais = []
+  fetch(`${URL_BASE}/solicitar_relatorio`, opcoes)
+    .then((response) => response.json())
+    .then((dados) => {
+      console.log(dados)
+      notas_fiscais = dados
+      linhas_planilha = [cabecalho].concat(notas_fiscais)
+      let conteudo_csv = "data:text/csv;charset=utf-8," + linhas_planilha.map(e => e.join(",")).join("\n");
+      var url = encodeURI(conteudo_csv);
+      window.open(url);
+    })
+  
 }

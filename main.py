@@ -36,6 +36,22 @@ def consulta_balanco():
         return redirect(url_for('cadastro_usuarios'))
     return render_template("consulta_balanco.html")
 
+@app.route("/solicitar_relatorio")
+def solicitar_relatorio():
+    dados = []
+    with psycopg.connect(URL_CONNEXAO) as conn:
+        with conn.cursor() as cur:
+            cur.execute("SELECT * FROM nota_fiscal")
+            dados = cur.fetchall()
+    
+    dados_formatados = []
+    for nota_fiscal in dados:
+        nota_formatada = list(nota_fiscal)
+        nota_formatada[3] = nota_fiscal[3].strftime("%d-%m-%Y")
+        dados_formatados.append(nota_formatada)
+
+    return jsonify(dados_formatados)
+
 @app.route("/executa_consulta_balanco", methods=["POST"])
 def executa_consulta_balanco():
     json_request = request.json
@@ -92,23 +108,6 @@ def criar_nota():
             conn.commit()
     return render_template("nota_cadastrada.html")
 
-@app.route("/busca_notas_ficais", methods=["POST"])
-def busca_notas_ficais():
-    json_request = request.json
-    print(json_request, json_request["nome_remedio"])
-    nome_remedio = json_request["nome_remedio"]
-    conn = sqlite3.connect('banco_de_dados.db')
-    cursor = conn.cursor()    
-    # Consultar os dados
-    cursor.execute(f"""
-        SELECT remedio.*, usuario.nome as nome_usuario, usuario.telefone, usuario.email 
-        FROM remedio 
-        JOIN usuario ON remedio.id_usuario = usuario.id
-        WHERE upper(remedio.nome) like '%{nome_remedio}%'
-    """)
-    dados = cursor.fetchall()
-    return jsonify(dados)
-
 @app.route('/submit_usuario', methods=['POST'])
 def submit_usuario():
     nome = request.form['nome']
@@ -120,29 +119,6 @@ def submit_usuario():
                         (nome, email, senha))
             conn.commit()
     return redirect(url_for('login'))
-
-@app.route('/submit_remedio', methods=['POST'])
-def submit_remedio():
-    nome = request.form['nome'].upper()
-    quantidade = request.form['quantidade']
-    dosagem = request.form['Dosagem do remédio']
-    validade = request.form['Validade']
-    id_usuario = session['id_usuario']
-
-    # conecta com SQLite.
-    conn = sqlite3.connect('banco_de_dados.db')
-    cursor = conn.cursor()
-  
-    # Inserir dados na tabela SQLite.
-    cursor.execute('''INSERT INTO remedio (nome, quantidade, dosagem, validade, id_usuario)
-                      VALUES (?, ?, ?, ?, ?)''', (nome, quantidade, dosagem, validade, id_usuario))
-
-    # Commit e fechar conexão
-    conn.commit()
-    conn.close()
-
-   # redireciona para página sucesso.html
-    return redirect(url_for('consulta_de_medicamentos'))
 
 @app.route("/submit_login", methods=['POST'])
 def submit_login():
