@@ -39,7 +39,7 @@ body {
 
 .box{   
    display: flex; 
-   width: 600px;
+   /* width: 600px; */
 
 }
 
@@ -53,7 +53,7 @@ body {
 }
 
 .img-box img{
-  width: 300%;
+  width: 200%;
   height: 100%;
 
 }
@@ -68,11 +68,13 @@ body {
 
 .form-box form{
   margin: 20px 0; 
+  
 }
 
 
 form .input-group{
     margin-bottom: 15px;
+    
 }
 
 form .input-group label{/* cor do nome ex:email*/
@@ -80,6 +82,7 @@ form .input-group label{/* cor do nome ex:email*/
     font-weight: bold;
     display: block;
     margin-bottom: 5px;
+   
 }
 
 
@@ -92,12 +95,14 @@ form .input-group input{
     border: 2px solid transparent;
     padding: 15px;
     font-size: 18px;
-    transition: all 0.4s ease;  
+    transition: all 0.4s ease; 
+   
 }
 
 
 div .input-group input{
     border-radius: 20px; 
+   
     
 }
 
@@ -114,7 +119,7 @@ form .input-group button {
     outline: none;
     border: none;
     margin-top: 15px;
-    /* cursor: pointer;   */
     font-size: 16px;
+   
 }
 
