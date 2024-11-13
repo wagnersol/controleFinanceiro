@@ -130,12 +130,6 @@ table tbody tr:nth-child(even) {
   display: none;
 }
 
-form .input-group label{/* cor do nome ex:email*/
-    color: #0c0c0c;
-    font-weight: bold;
-    margin-bottom: 5px;
-}
-
 #botao-submit {
   margin-top: 16px;
   width: 200px;
@@ -145,14 +139,6 @@ form .input-group label{/* cor do nome ex:email*/
   cursor: pointer;
 }
 
-form .input-group input{
+.form-group {
+  padding-top: 8px;
 }
-
-form .input-group input:focus{
-  border-color: #2509f7;
-}
-
-form .input-group button {
-  border-radius: 20px;
-}
-
